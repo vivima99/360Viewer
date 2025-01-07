@@ -5,18 +5,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity Web Player | Bauforum_WEB</title>
   </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+ <body style="text-align: center; padding: 0; border: 0; margin: 0;">
   <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="width: 960px; height: 600px; background: #231F20"></canvas>
-  <iframe 
-    id="web-frame" 
-    src="https://www.th-luebeck.de/isy/aktuelles/neuigkeiten/" 
-    style="width: 800px; height: 600px; display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid #ccc; z-index: 1000; background: white;">
-  </iframe>
-  <button 
-    id="open-web-frame" 
-    style="position: fixed; bottom: 20px; left: 20px; z-index: 1100; padding: 10px 20px; background: #0078D4; color: white; border: none; cursor: pointer;">
+  
+  <!-- Web Frame Container -->
+  <div id="web-frame-container" 
+       style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000;">
+    <iframe id="web-frame" 
+            src="https://www.th-luebeck.de/isy/aktuelles/neuigkeiten/" 
+            style="width: 80%; height: 80%; position: absolute; top: 10%; left: 10%; border: none; background: white;"></iframe>
+    <button id="close-web-frame" 
+            style="position: absolute; top: 5%; right: 10%; padding: 10px 20px; background: red; color: white; border: none; cursor: pointer;">
+      Close
+    </button>
+  </div>
+  
+  <button id="open-web-frame" 
+          style="position: fixed; bottom: 20px; left: 20px; z-index: 1100; padding: 10px 20px; background: #0078D4; color: white; border: none; cursor: pointer;">
     Open Web Window
   </button>
+  
   <script src="Build/Bauforum_WebBuild_Scorm_360.loader.js"></script>
   <script>
     // Unity Setup
@@ -32,15 +40,21 @@
     });
 
     // Web Frame Toggle
+    const webFrameContainer = document.getElementById("web-frame-container");
     const webFrame = document.getElementById("web-frame");
     const openButton = document.getElementById("open-web-frame");
+    const closeButton = document.getElementById("close-web-frame");
 
+    // Open iframe
     openButton.addEventListener("click", () => {
-      if (webFrame.style.display === "none") {
-        webFrame.style.display = "block";
-      } else {
-        webFrame.style.display = "none";
-      }
+      webFrame.src = "https://example.com"; // Set your desired URL here
+      webFrameContainer.style.display = "block";
+    });
+
+    // Close iframe
+    closeButton.addEventListener("click", () => {
+      webFrameContainer.style.display = "none";
+      webFrame.src = ""; // Clear the iframe src to stop the page from running
     });
   </script>
 </body>
