@@ -11,9 +11,18 @@
   <!-- Web Frame Container -->
   <div id="web-frame-container" 
        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000;">
-    <iframe id="web-frame" 
-            src="https://futurelearnlab.de/hub/" 
-            style="width: 80%; height: 80%; position: absolute; top: 10%; left: 10%; border: none; background: white;"></iframe>
+    <iframe 
+      width="560" 
+      height="315" 
+      src="https://www.youtube.com/embed/yFHjWLBhsWo?si=MwNyscR0fuSVnr40" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      allowfullscreen>
+      
+    </iframe>
+
     <button id="close-web-frame" 
             style="position: absolute; top: 5%; right: 10%; padding: 10px 20px; background: red; color: white; border: none; cursor: pointer;">
       Close
@@ -47,7 +56,7 @@
 
     // Open iframe
     openButton.addEventListener("click", () => {
-      webFrame.src = "https://futurelearnlab.de/hub/"; // Set your desired URL here
+      webFrame.src = "https://www.youtube.com/watch?v=yFHjWLBhsWo"; // Set your desired URL here
       webFrameContainer.style.display = "block";
     });
 
