@@ -34,34 +34,36 @@
     
     <script src="Build/Bauforum_WebBuild_Scorm_360.loader.js"></script>
     <script>
-      // Unity Setup
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        arguments: [],
-        dataUrl: "Build/Bauforum_WebBuild_Scorm_360.data",
-        frameworkUrl: "Build/Bauforum_WebBuild_Scorm_360.framework.js",
-        codeUrl: "Build/Bauforum_WebBuild_Scorm_360.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Bauforum_WEB",
-        productVersion: "1.0.2",
-      });
+      document.addEventListener("DOMContentLoaded", function() {
+        // Unity Setup
+        createUnityInstance(document.querySelector("#unity-canvas"), {
+          arguments: [],
+          dataUrl: "Build/Bauforum_WebBuild_Scorm_360.data",
+          frameworkUrl: "Build/Bauforum_WebBuild_Scorm_360.framework.js",
+          codeUrl: "Build/Bauforum_WebBuild_Scorm_360.wasm",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "Bauforum_WEB",
+          productVersion: "1.0.2",
+        });
 
-      // Web Frame Toggle
-      const webFrameContainer = document.getElementById("web-frame-container");
-      const webFrame = document.getElementById("web-frame");
-      const openButton = document.getElementById("open-web-frame");
-      const closeButton = document.getElementById("close-web-frame");
+        // Web Frame Toggle
+        const webFrameContainer = document.getElementById("web-frame-container");
+        const webFrame = document.getElementById("web-frame");
+        const openButton = document.getElementById("open-web-frame");
+        const closeButton = document.getElementById("close-web-frame");
 
-      // Open iframe (YouTube)
-      openButton.addEventListener("click", () => {
-        webFrame.src = "https://www.youtube.com/embed/yFHjWLBhsWo"; // Use the embed URL format
-        webFrameContainer.style.display = "block";
-      });
+        // Open iframe (YouTube)
+        openButton.addEventListener("click", () => {
+          webFrame.src = "https://www.youtube.com/embed/yFHjWLBhsWo"; // Use the embed URL format
+          webFrameContainer.style.display = "block";
+        });
 
-      // Close iframe
-      closeButton.addEventListener("click", () => {
-        webFrameContainer.style.display = "none";
-        webFrame.src = ""; // Clear the iframe src to stop the page from running
+        // Close iframe
+        closeButton.addEventListener("click", () => {
+          webFrameContainer.style.display = "none";
+          webFrame.src = ""; // Clear the iframe src to stop the page from running
+        });
       });
     </script>
   </body>
